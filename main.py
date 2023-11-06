@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_socketio import SocketIO, emit
 from red import preprocess_text
+import os
 
 app = Flask(__name__)
 
@@ -26,5 +27,9 @@ def handleText(data):
     print(GLOSA)
     emit('ProcessedText', GLOSA)
 
+PORT = os.getenv("PORT") or 5000
+HOST = os.getenv("HOST")
+
 if __name__ == '__main__':
-    socket_io.run(app, host="0.0.0.0", port=5000)
+    socket_io.run(app, host="0.0.0.0", port=int(PORT))
+
