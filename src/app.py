@@ -31,6 +31,6 @@ if __name__ == '__main__':
     port = os.getenv('PORT')
 
     if port is None:
-        port = "5000"
+        port = 443
 
     app.run(host="0.0.0.0", port=port, debug=True)
