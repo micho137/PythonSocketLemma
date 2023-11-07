@@ -1,6 +1,4 @@
-# syntax=docker/dockerfile:1
-
-FROM python:3.8-slim-buster
+FROM python:3.8.3-alpine3.11
 
 WORKDIR /python-docker
 
@@ -9,4 +7,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "main.py"]
+CMD [ "python", "/src/app.py"]
