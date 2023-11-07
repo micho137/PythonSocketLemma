@@ -1,10 +1,9 @@
-FROM python:3.8.3-alpine3.11
+FROM python:3.8
 
-WORKDIR /python-docker
-
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+WORKDIR /app
 
 COPY . .
 
-CMD [ "python", "/src/app.py"]
+RUN pip install -r requirements.txt
+
+CMD ["python", "./src/app.py"]
