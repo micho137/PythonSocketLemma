@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-socket_io = SocketIO(app, cors_allowed_origins=["https://prototalk.onrender.com/"])
+socket_io = SocketIO(app, cors_allowed_origins="*")
 
 @socket_io.on('connect')
 def test_connect():
@@ -31,6 +31,6 @@ if __name__ == '__main__':
     port = os.getenv('PORT')
 
     if port is None:
-        port = 443
+        port = 4890
 
     app.run(host="0.0.0.0", port=port, debug=True)
