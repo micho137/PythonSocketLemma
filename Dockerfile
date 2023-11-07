@@ -4,7 +4,7 @@ WORKDIR /python-docker
 
 COPY requirements.txt requirements.txt
 
-RUN apt-get update && apt-get install -y build-essential libatlas-base-dev
+RUN pip install atlas
 
 RUN pip install -r requirements.txt
 
