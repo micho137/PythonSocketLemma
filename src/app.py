@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-socket_io = SocketIO(app, cors_allowed_origins="*")
+socket_io = SocketIO(app, cors_allowed_origins="https://prototalk.onrender.com/")
 
 @socket_io.on('connect')
 def test_connect():
