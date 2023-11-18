@@ -25,7 +25,7 @@ def handleText(data):
 
 @app.route('/', methods=['GET'])
 def ping():
-    return jsonify({"response":"Hola, esto sirve"})
+    return jsonify({"response":"Desplegado correctamente"})
 
 if __name__ == '__main__':
     port = os.getenv('PORT')
