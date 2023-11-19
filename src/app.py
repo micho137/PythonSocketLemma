@@ -6,9 +6,9 @@ import os
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://prototalk.onrender.com"}}, supports_credentials=True)
 
-socket_io = SocketIO(app, cors_allowed_origins="*")
+socket_io = SocketIO(app, cors_allowed_origins="https://prototalk.onrender.com")
 
 @socket_io.on('connect')
 def test_connect():
@@ -31,7 +31,7 @@ def ping():
     return jsonify({"response":"Desplegado correctamente"})
 
 if __name__ == '__main__':
-    port = os.getenv('PORT')
+    port = os.getenv('PORT', 4890)
 
     if port is None:
         port = 4890
