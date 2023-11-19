@@ -1,11 +1,17 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 from red import preprocess_text
+from waitress import serve
 import os
 
 app = Flask(__name__)
 
-socket_io = SocketIO(app, cors_allowed_origins="*")
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+socket_io = SocketIO(app, cors_allowed_origins=["http://localhost:4890", "https://prototalk.onrender.com/"])
+
+#socket_io = SocketIO(app, cors_allowed_origins="*")
 
 @socket_io.on('connect')
 def test_connect():
@@ -33,4 +39,4 @@ if __name__ == '__main__':
     if port is None:
         port = 4890
 
-    app.run(host="0.0.0.0", port=port)
+    serve(app, host="0.0.0.0", port=port)
