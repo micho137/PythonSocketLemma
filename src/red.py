@@ -2,12 +2,11 @@ import spacy
 
 def preprocess_text(text):
     # Aqui cargamos el modelo spañol de Spacy
-    # nlp = spacy.load('es_core_news_sm') # Modelo Eficiente
-    nlp = spacy.load('es_dep_news_trf') # Modelo Preciso
+    nlp = spacy.load('es_dep_news_trf')
 
     # Se definen los STOP WORDS excluyendo los prononmbres y terminos a utilizar 
-    stop_words = set(['además','las', 'los' 'ante', 'cabe', 'e', 'a', 'el', 'hacia', 'lo'
-                      ,'según','tras','le','la','al','es','.', ',', 'de'])
+    stop_words = set(['además','las', 'los' 'ante', 'cabe','en', 'e', 'a', 'el', 'hacia', 'lo'
+                      ,'según','tras','le','la','al','es','.', ','])
 
     # POS tags permitidos (Pronombres, Verbos, Adjetivos)
     allowed_tags = ['PRON', 'VERB', 'ADJ']
