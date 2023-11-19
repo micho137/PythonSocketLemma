@@ -33,4 +33,4 @@ if __name__ == '__main__':
     if port is None:
         port = 4890
 
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port)
