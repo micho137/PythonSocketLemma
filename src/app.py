@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-socket_io = SocketIO(app, cors_allowed_origins=["http://localhost:4890", "https://prototalk.onrender.com/"])
+socket_io = SocketIO(app, cors_allowed_origins="*")
 
 #socket_io = SocketIO(app, cors_allowed_origins="*")
 
