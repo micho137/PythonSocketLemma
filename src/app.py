@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 CORS(app, resources={r"/*": {"origins": "https://prototalk.onrender.com"}}, supports_credentials=True)
 
-socket_io = SocketIO(app, cors_allowed_origins="https://prototalk.onrender.com")
+socket_io = SocketIO(app, cors_allowed_origins="*")
 
 @socket_io.on('connect')
 def test_connect():
