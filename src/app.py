@@ -2,7 +2,6 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 from red import preprocess_text
-from waitress import serve
 import os
 
 app = Flask(__name__)
@@ -10,8 +9,6 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 socket_io = SocketIO(app, cors_allowed_origins="*")
-
-#socket_io = SocketIO(app, cors_allowed_origins="*")
 
 @socket_io.on('connect')
 def test_connect():
@@ -39,4 +36,4 @@ if __name__ == '__main__':
     if port is None:
         port = 4890
 
-    serve(app, host="0.0.0.0", port=port)
+    socket_io.run(app, host="0.0.0.0", port=port, debug=True, use_reloader=False)
