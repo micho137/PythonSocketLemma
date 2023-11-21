@@ -5,15 +5,7 @@ import os
 
 app = Flask(__name__)
 
-api_cors_config = {
-    "origins":["http://localhost:4890"],
-    "methods":["OPTIONS", "GET", "POST"],
-    "allow_headers":["Authorization", "Content-Type"]
-}
-
-socket_io = SocketIO(app, resource={
-    r"/*": api_cors_config
-})
+socket_io = SocketIO(app, cors_allowed_origins="*")
 
 @socket_io.on('connect')
 def test_connect():
