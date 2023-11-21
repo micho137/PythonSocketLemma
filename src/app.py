@@ -1,14 +1,19 @@
 from flask import Flask, jsonify
-from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 from red import preprocess_text
 import os
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+api_cors_config = {
+    "origins":["http://localhost:4890"],
+    "methods":["OPTIONS", "GET", "POST"],
+    "allow_headers":["Authorization", "Content-Type"]
+}
 
-socket_io = SocketIO(app, cors_allowed_origins="*")
+socket_io = SocketIO(app, resource={
+    r"/*": api_cors_config
+})
 
 @socket_io.on('connect')
 def test_connect():
@@ -26,14 +31,14 @@ def handleText(data):
     print(GLOSA)
     emit('ProcessedText', GLOSA)
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def ping():
     return jsonify({"response":"Desplegado correctamente"})
 
 if __name__ == '__main__':
-    port = os.getenv('PORT', 4890)
+    port = os.getenv('PORT')
 
     if port is None:
         port = 4890
 
-    socket_io.run(app, host="0.0.0.0", port=port, debug=True, use_reloader=False)
+    app.run(host="0.0.0.0", port=port, debug=True)
