@@ -33,4 +33,4 @@ if __name__ == '__main__':
     if port is None:
         port = 4890
 
-    socket_io.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
+    socket_io.run(app,host="0.0.0.0", port=port, debug=False, use_reloader=False)
