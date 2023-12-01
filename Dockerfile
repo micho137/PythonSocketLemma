@@ -10,4 +10,4 @@ COPY requirements.txt .
 COPY src/ src/
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 4890
-CMD ["gunicorn", "main:app"]
+CMD ["gunicorn", "app:app"]
