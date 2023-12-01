@@ -28,4 +28,4 @@ def ping():
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 4890))
-    socket_io.run(app, host="0.0.0.0", port=port, debug=False)
+    socket_io.run(app, host="0.0.0.0", port=port, debug=False, use_reloader=False)
