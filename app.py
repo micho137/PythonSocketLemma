@@ -23,7 +23,7 @@ def handle_text(data):
     processed_text = preprocess_text(data)
     GLOSA.append(processed_text)
     print(GLOSA)
-    emit('ProcessedText', GLOSA, broadcast=True)
+    emit('ProcessedText', GLOSA)
 
 @app.route('/')
 def ping():
