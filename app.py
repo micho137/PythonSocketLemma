@@ -1,7 +1,10 @@
 from flask import Flask, jsonify
 from flask_socketio import SocketIO, emit
 from red import preprocess_text
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 app = Flask(__name__)
 socket_io = SocketIO(app, cors_allowed_origins="*")
@@ -27,5 +30,5 @@ def ping():
     return jsonify({"response": "Desplegado correctamente"})
 
 if __name__ == '__main__':
-
-    socket_io.run(app, host="0.0.0.0", debug=False, use_reloader=False)
+    port = os.getenv("PORT")
+    socket_io.run(app, host="0.0.0.0", port=port, debug=False, use_reloader=False)
