@@ -27,5 +27,5 @@ def ping():
     return jsonify({"response": "Desplegado correctamente"})
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 4890)) or 4890
-    socket_io.run(app, host="0.0.0.0", port=port, debug=False, use_reloader=False)
+
+    socket_io.run(app, host="0.0.0.0", debug=False, use_reloader=False)

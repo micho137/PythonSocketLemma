@@ -1,7 +1,13 @@
-FROM python:3.8-slim
+FROM python:3.9.alpine
+
 WORKDIR /app
-COPY requirements.txt .
+
+RUN apk add --no-cache gcc musl-dev linux-headers
+
+COPY requirements.txt requirements.txt
+
 RUN pip install --no-cache-dir -r requirements.txt
-COPY src/ src/
-EXPOSE 4890
-CMD ["gunicorn", "--bind", "0.0.0.0:4890", "app:app"]
+
+COPY . .
+
+CMD ["flask", "run", "-p", "4890"]
