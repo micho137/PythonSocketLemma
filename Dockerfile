@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 4890
 
 # Comando de inicio para Gunicorn
-CMD ["gunicorn", "-k", "eventlet", "app:app", "--bind", "0.0.0.0:4890"]
+CMD ["gunicorn", "-k", "app:app", "--bind", "0.0.0.0:4890"]
