@@ -6,7 +6,7 @@ def preprocess_text(text):
     #nlp = spacy.load('es_dep_news_trf') # Modelo Preciso
 
     # Se definen los STOP WORDS excluyendo los prononmbres y terminos a utilizar 
-    stop_words = set(['además','las', 'los' 'ante', 'cabe','en', 'e', 'a', 'el', 'hacia', 'lo'
+    stop_words = set(['además','las', 'los' 'ante', 'de','ni', 'cabe','en', 'e', 'a', 'el', 'hacia', 'lo'
                       ,'según','tras','le','la','al','es','.', ','])
 
     # POS tags permitidos (Pronombres, Verbos, Adjetivos)
